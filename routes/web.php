@@ -34,18 +34,11 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/teste', function () {
-    return Inertia::render('Teste', [
-        'message' => 'testeteste'
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'Login' => Route::has('login'),
+        'Register' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
     ]);
-})->name('teste');
-
-
-Route::get('/teste2', function () {
-    return Inertia::render('TesteNovo');
-})->name('teste2');
-
-Route::get('/login', function () {
-    return Inertia::render('Login');
-})->name('login');
-
+});
